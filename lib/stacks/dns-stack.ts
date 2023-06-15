@@ -11,10 +11,16 @@ export class DNSStack extends cdk.Stack {
       zoneName: 'brainfartlab.com',
     });
 
-    new acm.Certificate(this, 'BFLCertificate', {
-      domainName: 'api.brainfartlab.com',
-      certificateName: 'BrainFartLab Service',
-      validation: acm.CertificateValidation.fromDns(hostedZone),
+    new route53.NsRecord(this, 'BFLZone-tst', {
+      recordName: 'api-test.brainfartlab.com',
+      ttl: cdk.Duration.seconds(300),
+      values: [
+        'ns-1693.awsdns-19.co.uk.',
+        'ns-523.awsdns-01.net.',
+        'ns-1087.awsdns-07.org.',
+        'ns-130.awsdns-16.com.',
+      ],
+      zone: hostedZone,
     });
   }
 }
