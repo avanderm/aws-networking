@@ -12,7 +12,7 @@ export class DNSStack extends cdk.Stack {
     });
 
     new route53.NsRecord(this, 'BFLZone-tst', {
-      recordName: 'api-test.brainfartlab.com',
+      recordName: 'api-tst.brainfartlab.com',
       ttl: cdk.Duration.seconds(300),
       values: [
         'ns-1693.awsdns-19.co.uk.',
