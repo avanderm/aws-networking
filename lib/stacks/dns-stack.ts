@@ -34,5 +34,11 @@ export class DNSStack extends cdk.Stack {
       ],
       zone: hostedZone,
     });
+
+    new route53.CnameRecord(this, 'BFLBlog', {
+      recordName: 'blog.brainfartlab.com',
+      zone: hostedZone,
+      domainName: 'brainfartlab.github.io',
+    });
   }
 }
